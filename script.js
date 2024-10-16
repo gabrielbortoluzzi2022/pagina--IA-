@@ -8,24 +8,41 @@ const perguntas = [
     {
         enunciado: "Qual foi o inventor da honda?",
         alternativas: [
-        "Torakusu yamaha",
-        "soichiro honda"
+            {
+                texto:"Torakusu yamaha",
+                afirmacao:"afirmação"
+            },
+            {
+                texto:"soichiro honda",
+                afirmacao:"afirmação"
+            }
+        
+        
         ]
 
     },
     {
         enunciado: "A motocicleta titan 150 é de qual fabricante",
         alternativas: [
-        "Honda",
-        "Yamaha"
+            {
+                texto:"Honda",
+                afirmacao: "Yamaha"
+            },
+            
+        
+       
         ]
 
     },
     {
         enunciado: "A motocicleta ybr 125 é de qual fabricante",
         alternativas: [
-        "Honda",
-        "Yamaha"
+        {
+            texto:"Honda",
+            afirmacao: "Yamaha"
+        }
+        
+       
         ]
 
 
@@ -33,8 +50,12 @@ const perguntas = [
     {
         enunciado: "A motocicleta xtz 125 é de qual fabricante",
         alternativas: [
-        "Honda",
-        "Yamaha"
+            {
+                texto:"Honda",
+                afirmacao: "Yamaha"
+            }
+        
+       
         ]
 
     }
@@ -49,3 +70,15 @@ function mostraPergunta() {
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     mostraAltrnativas();
 }
+function mostraAltrnativas() {
+    for(const alternativas of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativas.texto;
+        botaoAlternativas.addEventListener("click",function(){
+            atual++;
+            mostraPergunta();
+        });
+        caixaAltermativas.appendChild(botaoAlternativas);
+    }
+}
+mostraPergunta();
